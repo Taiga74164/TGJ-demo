@@ -41,17 +41,17 @@ function App() {
         {
             title: "Marriage Celebrant Service",
             description: "Perfect for couples who want a quick, no-fuss ceremony — short, sweet, and fully prepared.",
-            image: "/images/homepage/4.marriage_celebrant_service_.jpg"
+            image: "images/homepage/4.marriage_celebrant_service_.jpg"
         },
         {
             title: "Wedding MC Service",
             description: "Professional hosting to ensure your reception runs smoothly, on time, and full of energy.",
-            image: "/images/homepage/4.wedding_mc_service.jpg"
+            image: "images/homepage/4.wedding_mc_service.jpg"
         },
         {
             title: "Tea Ceremony Service",
             description: "A professional host to ensure your tea ceremony runs smoothly, on time, and honours every tradition with care and respect.",
-            image: "/images/homepage/4._tea_cemony_service.jpg"
+            image: "images/homepage/4._tea_cemony_service.jpg"
         }
     ];
 
