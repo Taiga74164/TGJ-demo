@@ -3,7 +3,8 @@ import { ArrowRight, Mail, MapPin, Menu, Phone, X } from 'lucide-react';
 
 import PlaylistCarousel from './PlaylistCarousel';
 import ResponsiveCarousel from './ResponsiveCarousel';
-
+import Navigation
+ from './Navigation';
 const TypingText = ({text = "", className = "", speed = 50}) => {
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,8 +25,7 @@ const TypingText = ({text = "", className = "", speed = 50}) => {
     return <span className={className}>{currentText}</span>;
 };
 
-function App() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function App() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -40,7 +40,7 @@ function App() {
     const services = [
         {
             title: "Marriage Celebrant Service",
-            description: "Perfect for couples who want a quick, no-fuss ceremony — short, sweet, and fully prepared.",
+            description: "Looking for a professional, fun, and inclusive celebrant who creates custom wedding experiences—whether it’s a simple legal ceremony or a grand celebration.",
             image: "images/homepage/4.marriage_celebrant_service_.jpg"
         },
         {
@@ -140,108 +140,11 @@ function App() {
     return (
         <div className="min-h-screen bg-[#f5f4f1]">
             {/* Navigation */}
-            <nav className="fixed top-0 w-full bg-[#f5f4f1] backdrop-blur-md z-50 shadow-sm">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-20 md:h-24 relative">
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center justify-center w-full">
-                            <div className="flex items-center space-x-8">
-                                {/* Left */}
-                                <a href="#home"
-                                   className="text-gray-700 hover:text-[#867e64] transition-colors">Home</a>
-                                <a href="#about"
-                                   className="text-gray-700 hover:text-[#867e64] transition-colors">About</a>
-                                {/* Services Dropdown */}
-                                <div className="relative group">
-                                    <button
-                                        className="text-gray-700 hover:text-[#867e64] transition-colors focus:outline-none">
-                                        Services
-                                    </button>
-                                    <div
-                                        className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
-                                        <a href="#services"
-                                           className="block px-4 py-2 text-gray-700 hover:bg-[#867e64] hover:text-gray-100 hover:rounded-t-md">Marriage
-                                            Celebrant</a>
-                                        <a href="#services"
-                                           className="block px-4 py-2 text-gray-700 hover:bg-[#867e64] hover:text-gray-100">Wedding
-                                            MC</a>
-                                        <a href="#services"
-                                           className="block px-4 py-2 text-gray-700 hover:bg-[#867e64] hover:text-gray-100 hover:rounded-b-md">Tea
-                                            Ceremony</a>
-                                    </div>
-                                </div>
-
-                                {/* Desktop Logo */}
-                                <img src="images/nav_logo_test.png" alt="NavLogo"
-                                     className="h-auto max-h-20 w-auto pointer-events-none select-none mx-8"/>
-
-                                {/* Right */}
-                                <a href="#vendors"
-                                   className="text-gray-700 hover:text-[#867e64] transition-colors">Vendors</a>
-                                <a href="#blog"
-                                   className="text-gray-700 hover:text-[#867e64] transition-colors">Blog</a>
-                                <a href="#contact"
-                                   className="text-gray-700 hover:text-[#867e64] transition-colors">Contact</a>
-                            </div>
-                        </div>
-
-                        {/* Mobile Logo */}
-                        <div className="md:hidden">
-                            <img
-                                src="images/nav_logo_long.png"
-                                alt="NavLogo"
-                                className="h-auto max-h-16 w-auto max-w-64 pointer-events-none select-none"
-                            />
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <button
-                            className="md:hidden"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
-                            {isMenuOpen
-                                ? <X className="w-8 h-8" color="#867e64"/>
-                                : <Menu className="w-8 h-8" color="#867e64"/>}
-                        </button>
-
-                    </div>
-                </div>
-
-                {/* Mobile Navigation */}
-                {isMenuOpen && (
-                    <div className="md:hidden bg-white border-t">
-                        <div className="px-2 pt-2 pb-3 space-y-1">
-                            <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Home</a>
-                            <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">About</a>
-                            <div className="border-t my-1"></div>
-                            <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Marriage
-                                Celebrant</a>
-                            <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Wedding
-                                MC</a>
-                            <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Tea
-                                Ceremony</a>
-                            <div className="border-t my-1"></div>
-                            <a href="#vendors"
-                               className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Vendors</a>
-                            <a href="#blog" className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Blog</a>
-                            <a href="#contact"
-                               className="block px-3 py-2 text-gray-700 hover:text-[#867e64]">Contact</a>
-                        </div>
-                    </div>
-                )}
-            </nav>
+            <Navigation/>
 
             {/* Hero Section */}
             <section id="home" className="relative h-screen flex items-center justify-center">
                 <div className="absolute inset-0">
-                    {/* <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/images/placeholder.jpg')",
-              backgroundAttachment: 'fixed'
-            }}
-          ></div> */}
                     <video
                         className="absolute inset-0 w-full h-full object-cover"
                         src="videos/intro.mp4"
@@ -256,26 +159,22 @@ function App() {
 
                 {/* Foreground Text */}
                 <div className="relative z-10 text-center text-[#f5f4f1] max-w-4xl mx-auto px-4">
-                    <h1 className="font-serif text-5xl md:text-7xl mb-6 leading-tight">
-                        Celebrate Your Love with JO
+                    <h1 className="text-4xl md:text-7xl mb-6 leading-tight">
+                        Celebrate Your Love
+                        <br/>
+                        with JO
                         <br/>
                         {/* <span className="text-[#867e64]">Your Story, Your Way</span> */}
                         <TypingText text="Your Story, Your Way" className="text-[#867e64]" speed={100}/>
                     </h1>
-                    <p className="text-xl md:text-2xl mb-8 text-[#f5f4f1]">
-                        Together With Jo — Your Bilingual Celebrant and MC — creates heartfelt, unforgettable weddings
+                    <p className="text-lg md:text-2xl mb-8 text-[#f5f4f1]">
+                        Together With JO — Your Bilingual Celebrant and MC — creates heartfelt, unforgettable weddings
                         that reflect your unique love story, not only just paperwork
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        {/* <a
-              href="#contact" 
-              className="bg-rose-500 hover:bg-[#867e64] text-[#f5f4f1] px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
-            >
-              Book Your Ceremony
-            </a> */}
                         <a
                             href="#services"
-                            className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-[#f5f4f1] px-8 py-4 rounded-full text-lg font-semibold transition-all border border-white/30"
+                            className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-[#f5f4f1] px-8 py-4 rounded-full text-base md:text-lg font-semibold transition-all border border-white/30"
                         >
                             Learn More
                         </a>
@@ -299,24 +198,24 @@ function App() {
                                 ></div>
                                 {/* Overlay */}
                                 <div
-                                    className="absolute bottom-0 w-full text-center overflow-hidden transition-all duration-500 group-hover:h-40 h-16 bg-[#f5f4f1] bg-opacity-80 group-hover:bg-[#f5f4f1]-90 group-hover:backdrop-blur-sm">
-                                    <div
-                                        className="transition-all duration-500 transform group-hover:translate-y-4 translate-y-4">
-                                        <h3 className="font-serif text-xl text-gray-800">{service.title}</h3>
+                                    className="absolute bottom-0 w-full bg-[#f5f4f1] bg-opacity-80 backdrop-blur-sm rounded-b-xl
+             transition-all duration-500 ease-in-out 
+             max-h-16 group-hover:max-h-[400px] overflow-hidden px-4 py-4 text-center"
+                                >
+                                    <div className="space-y-2">
+                                        <h3 className="text-xl text-gray-800">{service.title}</h3>
 
                                         <div
-                                            className="flex items-center justify-center my-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                            className="flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                             <div
                                                 className="flex-grow h-px mx-2 bg-gradient-to-r from-transparent to-[#867e64]"/>
-                                            {/* <div className="flex-grow h-px mx-2 bg-gradient-to-r from-transparent via-[#867e64] to-transparent" /> */}
                                             <img src="images/ring.png" alt="Ring"
                                                  className="h-auto max-h-5 w-auto pointer-events-none select-none"/>
                                             <div
                                                 className="flex-grow h-px mx-2 bg-gradient-to-r from-[#867e64] to-transparent"/>
-                                            {/* <div className="flex-grow h-px mx-2 bg-gradient-to-r from-transparent via-[#867e64] to-transparent" /> */}
                                         </div>
 
-                                        <p className="text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 px-6 text-center">
+                                        <p className="text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                             {service.description}
                                         </p>
                                     </div>
@@ -327,9 +226,9 @@ function App() {
 
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
-                            <h2 className="font-serif text-4xl md:text-5xl text-gray-800 mb-4">Just 4 Simple Steps to
+                            <h2 className="text-3xl md:text-5xl text-gray-800 mb-4">Just 4 Simple Steps to
                                 Get Married</h2>
-                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                                 We make your wedding planning simple and stress-free
                             </p>
                         </div>
@@ -350,7 +249,7 @@ function App() {
                                             </div>
                                         )}
                                     </div>
-                                    <h3 className="font-serif text-xl text-gray-800 mb-2">{step.step}</h3>
+                                    <h3 className="text-xl text-gray-800 mb-2">{step.step}</h3>
                                     <h4 className="font-semibold text-lg text-[#867e64] mb-3">{step.title}</h4>
                                     <p className="text-gray-600">{step.description}</p>
                                 </div>
@@ -369,7 +268,7 @@ function App() {
                         "images/homepage/6.1.jpg",
                         "images/homepage/6.3.jpg",
                         "images/homepage/6.4.jpg",
-                        "images/homepage/6.5.jpg",
+                        "images/homepage/6.9.jpg",
                     ]}
                 />
             </section>
@@ -378,15 +277,15 @@ function App() {
             <section id="contact" className="py-20 bg-[#f5f4f1]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="font-serif text-4xl md:text-5xl text-gray-800 mb-4">Let's Plan Your Special
+                        <h2 className="text-3xl md:text-5xl text-gray-800 mb-4">Let's Plan Your Special
                             Day</h2>
-                        <p className="text-xl text-gray-600">Enquire about our wedding ceremony packages — or have any
+                        <p className="text-lg md:text-xl text-gray-600">Enquire about our wedding ceremony packages — or have any
                             questions?</p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12">
                         <div>
-                            <h3 className="font-serif text-2xl text-gray-800 mb-6">Contact Information</h3>
+                            <h3 className="text-xl md:text-2xl text-gray-800 mb-6">Contact Information</h3>
                             <div className="space-y-6">
                                 <div className="flex items-center space-x-4">
                                     <div className="bg-[#cdcbbb] p-3 rounded-full">
@@ -431,7 +330,7 @@ function App() {
                                             placeholder="Your Name *"
                                             value={formData.name}
                                             onChange={handleInputChange}
-                                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
+                                            className={`text-gray-900 w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
                                                 errors.name ? 'border-red-500' : 'border-[#b0ac94]'
                                             }`}
                                         />
@@ -444,7 +343,7 @@ function App() {
                                             placeholder="Email Address *"
                                             value={formData.email}
                                             onChange={handleInputChange}
-                                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
+                                            className={`text-gray-900 w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
                                                 errors.email ? 'border-red-500' : 'border-[#b0ac94]'
                                             }`}
                                         />
@@ -461,7 +360,7 @@ function App() {
                                             placeholder="Phone Number"
                                             value={formData.phone}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
+                                            className="text-gray-900 w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
                                         />
                                     </div>
                                     <div>
@@ -470,7 +369,7 @@ function App() {
                                             name="date"
                                             value={formData.date}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
+                                            className="text-gray-900 w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
                                         />
                                     </div>
                                 </div>
@@ -481,14 +380,14 @@ function App() {
                                             name="service"
                                             value={formData.service}
                                             onChange={handleInputChange}
-                                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
+                                            className={`text-gray-900 w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all ${
                                                 errors.service ? 'border-red-500' : 'border-[#b0ac94]'
                                             }`}
                                         >
                                             <option value="">Select Service Type *</option>
                                             <option value="marriage_celebrant">Marriage Celebrant</option>
                                             <option value="mc">Wedding MC</option>
-                                            <option value="tea_ceremony">Tea Ceremony</option>
+                                            <option value="more">Both Services Or More</option>
                                         </select>
                                         {errors.service &&
                                             <p className="text-red-500 text-sm mt-1">{errors.service}</p>}
@@ -497,25 +396,25 @@ function App() {
                                         <input
                                             type="text"
                                             name="venue"
-                                            placeholder="Venue (optional)"
+                                            placeholder="Venue"
                                             value={formData.venue}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
+                                            className="text-gray-900 w-full px-4 py-3 border border-[#b0ac94] rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all"
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <textarea
-                                        name="message"
-                                        rows="4"
-                                        placeholder="Tell us about your vision for your special day... *"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all resize-none ${
-                                            errors.message ? 'border-red-500' : 'border-[#b0ac94]'
-                                        }`}
-                                    ></textarea>
+                                  <textarea
+                                      name="message"
+                                      rows="4"
+                                      placeholder="Tell us about your vision for your special day... *"
+                                      value={formData.message}
+                                      onChange={handleInputChange}
+                                      className={`text-gray-900 w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#605648] focus:border-transparent transition-all resize-none ${
+                                          errors.message ? 'border-red-500' : 'border-[#b0ac94]'
+                                      }`}
+                                  ></textarea>
                                     {errors.message &&
                                         <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                                 </div>
@@ -537,8 +436,8 @@ function App() {
             <section className="py-20 bg-[#f5f4f1]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="font-serif text-4xl md:text-5xl text-gray-800 mb-4">My Happily-Ever-Afters</h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <h2 className="text-3xl md:text-5xl text-gray-800 mb-4">My Happily-Ever-Afters</h2>
+                        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                             Recent beautiful ceremonies we've had the honor to celebrate
                         </p>
                     </div>
@@ -580,16 +479,16 @@ function App() {
             <section id="vendors" className="py-20 bg-[#f5f4f1]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12">
-                        <div>
-                            <h3 className="font-serif text-5xl sm:3xl text-gray-800 mb-6">The Vendors</h3>
-                            <p className="text-gray-600">
+                        <div className="text-center md:text-left">
+                            <h3 className="text-3xl md:text-5xl text-gray-800 mb-6">The Vendors</h3>
+                            <p className="text-lg text-gray-600">
                                 To help you find the best services for your big day, I’ve partnered with trusted vendors
                                 I’ve personally worked with. After booking with me, you’ll receive a referral code to
                                 enjoy 5% OFF
                             </p>
 
                             <button
-                                className="w-[30vh] mt-4 bg-[#867e64] hover:bg-[#605648] text-[#f5f4f1] py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
+                                className="w-[40vh] md:w-[30vh] mt-4 bg-[#867e64] hover:bg-[#605648] text-[#f5f4f1] py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
                                 Click here to see all vendors
                             </button>
                         </div>
@@ -616,7 +515,7 @@ function App() {
                                     className="h-auto max-h-32 w-auto pointer-events-none select-none"
                                 />
                             </div>
-                            <div className="flex space-x-4 items-center justify-center">
+                            <div className="flex space-x-4 md:items-center md:justify-center">
                                 <a href="https://instagram.com/togetherwith.jo" target="_blank"
                                    rel="noopener noreferrer"
                                    className="hover:text-[#cdcbbb] transition text-[#867e64]">
@@ -733,5 +632,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
